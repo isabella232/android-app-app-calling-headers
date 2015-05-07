@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/jordan/Desktop/sinch-android-rtc-3.6.0/samples/sinch-rtc-sample-calling/libs/sinch-android-rtc-3.6.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="b936e942a81ff80bffc44302c1864f4896a7c366">
+        <dex dex="/Users/jordan/Desktop/sinch-android-rtc-3.6.0/samples/sinch-rtc-sample-calling/build/intermediates/pre-dexed/debug/sinch-android-rtc-3.6.0-bb69ef0d7a691ae6975406c23e621a7841bb7382.jar" />
+    </item>
+
+</items>
