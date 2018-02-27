@@ -30,7 +30,7 @@ You'll need the following permission to access the device's location:
 Now, in `callButtonClicked` in **PlaceCallActivity.java**, you can get the latitude and longitude of the last known location:
 
     LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-    Location lastLoc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+    Location lastLoc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
     Double longitude = lastLoc.getLongitude();
     Double latitude = lastLoc.getLatitude();
     
@@ -49,7 +49,7 @@ Use a Geocoder object to turn the latitude and and longitude into a human-readab
 I chose to send the city/state/zipcode of the location as the header:
 
     Map<String, String> headers = new HashMap<String, String>();
-    headers.put("location", addresses.get(0).getAddressLine(1));
+    headers.put("location", addresses.get(0).getAddressLine(0));
     
 You can add as many items as you like to the headers like so:
 
