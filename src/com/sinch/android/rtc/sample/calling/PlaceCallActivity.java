@@ -1,14 +1,18 @@
 package com.sinch.android.rtc.sample.calling;
 
+import com.sinch.android.rtc.MissingPermissionException;
 import com.sinch.android.rtc.calling.Call;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -66,7 +70,17 @@ public class PlaceCallActivity extends BaseActivity {
     private void callButtonClicked() {
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location lastLoc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Location lastLoc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         Double longitude = lastLoc.getLongitude();
         Double latitude = lastLoc.getLatitude();
 
@@ -79,7 +93,7 @@ public class PlaceCallActivity extends BaseActivity {
         }
 
         Map<String, String> headers = new HashMap<String, String>();
-        headers.put("location", addresses.get(0).getAddressLine(1));
+        headers.put("location", addresses.get(0).getAddressLine(0));
 
         String userName = mCallName.getText().toString();
         if (userName.isEmpty()) {
