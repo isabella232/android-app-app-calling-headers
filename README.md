@@ -1,4 +1,4 @@
-#How to Add an Android Header in a Calling App (With User Location)
+# How to Add an Android Header in a Calling App (With User Location)
 
 This tutorial demonstrates how to make a Sinch app-to-app call with a header. In this app, I'll send the location of the person calling so the recipient can see where the other user is calling from. 
 
